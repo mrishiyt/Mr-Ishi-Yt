@@ -1,174 +1,430 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html lang="en">
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr Ishi Yt - Custom Hub & Dashboard</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            scroll-behavior: smooth;
-        }
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            background: #1a1a1a;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.1);
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .header h1 {
-            color: #00ffcc;
-            font-size: 32px;
-            margin: 0 0 10px 0;
-        }
-        .header p {
-            color: #b3b3b3;
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-        .explore-btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #00ffcc;
-            color: #0d0d0d;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 6px;
-            transition: 0.3s;
-        }
-        .explore-btn:hover {
-            background-color: #00cca3;
-        }
-        .main-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-            justify-content: center;
-        }
-        .card {
-            background: #1a1a1a;
-            padding: 25px;
-            border-radius: 12px;
-            width: 320px;
-            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.1);
-            box-sizing: border-box;
-        }
-        .card h2 {
-            color: #00ffcc;
-            font-size: 20px;
-            margin-top: 0;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            background: #262626;
-            border: 1px solid #404040;
-            color: white;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        .btn {
-            width: 100%;
-            padding: 10px;
-            background-color: #00ffcc;
-            color: #0d0d0d;
-            border: none;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background-color: #00cca3;
-        }
-        .post-box {
-            background: #262626;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            border-left: 4px solid #00ffcc;
-        }
-        .post-title {
-            font-weight: bold;
-            color: #00ffcc;
-            margin-bottom: 5px;
-        }
-        .post-desc {
-            color: #b3b3b3;
-            font-size: 14px;
-            margin: 0;
-        }
-        .feed-container {
-            flex-grow: 1;
-            max-width: 500px;
-        }
-    </style>
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'/>
+  <title><data:view.title.escaped/></title>
+  <b:include data='blog' name='all-head-content'/>
+  
+  <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap' rel='stylesheet'/>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
+
+  <b:skin><![CDATA[
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg-base: #030712;
+      --bg-surface: rgba(15, 23, 42, 0.80);
+      --border-color: rgba(56, 189, 248, 0.2);
+      --border-glow: rgba(56, 189, 248, 0.5);
+      --accent-primary: #38bdf8;
+      --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      background-image: linear-gradient(to bottom, rgba(3, 7, 18, 0.92), rgba(3, 7, 18, 0.98)), 
+                        url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8l0B-k2Z8W_X9Rk8q5W8F9mJ2kL3p4o5I6u7Y8t9r0Q1w2E3r4T5y6U7i8O9p0A1s2D3f4G5h6J7k8L9z0X1c2V3b4N5m6/s1600/banner_piece.png');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes floatAnimation {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.7); }
+      100% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); }
+    }
+
+    .animated-logo {
+      animation: floatAnimation 4s ease-in-out infinite, pulseGlow 3s ease-in-out infinite;
+    }
+
+    /* Dino Preloader */
+    #dino-preloader {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #030712; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      z-index: 99999; transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    #dino-preloader.reveal-black {
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    }
+
+    .dino-game-box {
+      text-align: center; background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-glow); padding: 40px; border-radius: 20px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8); cursor: pointer; max-width: 500px; width: 90%;
+    }
+    .dino-icon-anim { font-size: 48px; color: #38bdf8; margin-bottom: 20px; }
+    .dino-title { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .dino-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; font-family: 'JetBrains Mono', monospace; }
+    .dino-btn {
+      background: var(--accent-gradient); color: #030712; border: none;
+      padding: 10px 24px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer;
+    }
+
+    /* Step-by-Step Welcome Animation Sequence */
+    #welcomeScreen {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: radial-gradient(circle at center, #0f172a 0%, #030712 100%);
+      z-index: 99998; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: opacity 0.5s ease;
+    }
+    #welcomeScreen.active { opacity: 1; visibility: visible; }
+
+    .step-welcome-text {
+      font-size: clamp(24px, 4vw, 40px); font-weight: 700; letter-spacing: 6px; color: var(--text-muted);
+      text-transform: uppercase; opacity: 0; transform: translateY(20px); transition: all 0.6s ease;
+    }
+    .step-welcome-text.show {
+      opacity: 1; transform: translateY(0);
+    }
+    .step-welcome-text.hide {
+      opacity: 0; transform: translateY(-20px); transition: all 0.4s ease;
+    }
+
+    .step-brand-box {
+      position: absolute; display: flex; flex-direction: column; align-items: center; gap: 15px;
+      opacity: 0; transform: translateY(80px) scale(0.5);
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .step-brand-box.show-zoom {
+      opacity: 1; transform: translateY(0) scale(1);
+    }
+    .step-brand-box.zoom-out-exit {
+      transform: translateY(-120vh) scale(0.8); opacity: 0;
+      transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .welcome-logo-img {
+      width: 110px; height: 110px; border-radius: 50%;
+      border: 3px solid var(--accent-primary); object-fit: cover;
+    }
+    .welcome-main-title {
+      font-size: clamp(32px, 6vw, 60px); font-weight: 900;
+      background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+
+    .post-share-buttons, .share-buttons, .post-footer, .comments, .comment-form { display: none !important; }
+
+    header {
+      position: sticky; top: 0; background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color); z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1200px; margin: 0 auto; padding: 12px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-img { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--accent-primary); object-fit: cover; }
+    .brand-text { font-size: 17px; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 600; }
+    .nav-links a:hover { color: var(--accent-primary); }
+
+    .hero-section {
+      max-width: 800px; margin: 60px auto 40px auto; padding: 0 20px; text-align: center;
+      opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hero-section.show-up { opacity: 1; transform: translateY(0); }
+
+    .hero-channel-logo {
+      width: 115px; height: 115px; border-radius: 50%; border: 3px solid var(--accent-primary);
+      object-fit: cover; margin: 0 auto 15px auto; display: block;
+    }
+    .hero-logo-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 20px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px;
+      background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 50px; font-size: 11px; font-weight: 600; color: var(--accent-primary); margin-bottom: 20px;
+    }
+    .hero-title { font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; color: #fff; }
+    .hero-title span { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-desc { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
+
+    .main-wrapper {
+      max-width: 900px; margin: 0 auto 80px auto; padding: 0 20px; width: 100%; flex: 1;
+      opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+    }
+    .main-wrapper.show-up { opacity: 1; transform: translateY(0); }
+
+    .ai-card {
+      background: var(--bg-surface); backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; margin-bottom: 30px;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+    }
+    .ai-card-title { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .ai-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 24px; }
+    .ai-content { font-size: 14px; line-height: 1.7; color: #cbd5e1; }
+
+    #toast {
+      position: fixed; bottom: 30px; right: 30px; background: #0f172a;
+      border: 1px solid var(--accent-primary); color: #fff; padding: 12px 20px;
+      border-radius: 12px; font-size: 12px; font-weight: 600;
+      transform: translateY(100px); opacity: 0; transition: all 0.3s ease; z-index: 999999;
+    }
+    #toast.show { transform: translateY(0); opacity: 1; }
+
+    footer {
+      border-top: 1px solid var(--border-color); background: rgba(3, 7, 18, 0.9);
+      padding: 24px 0; text-align: center; font-size: 12px; color: var(--text-muted);
+    }
+    footer a { color: var(--accent-primary); text-decoration: none; }
+  ]]></b:skin>
 </head>
+
 <body>
 
-    <!-- Top Banner with Working Explore Button -->
-    <div class="header" id="home">
-        <h1>Mr Ishi Yt</h1>
-        <p>Custom car modifications, phonk video edits, and professional digital web solutions.</p>
-        <a href="#dashboard" class="explore-btn">Explore More</a>
+  <div id='dino-preloader'>
+    <div class='dino-game-box' onclick='startWebsiteTransition()'>
+      <div class='dino-icon-anim'><i class='fa-solid fa-gamepad'/></div>
+      <div class='dino-title'>No Internet Connection</div>
+      <div class='dino-sub'>Click to Continue &amp; Play Dino</div>
+      <button class='dino-btn'><i class='fa-solid fa-play'/> Start Web Experience</button>
     </div>
+  </div>
 
-    <!-- Main Section containing Login, Signup and Posts -->
-    <div class="main-container" id="dashboard">
-        
-        <!-- Login Box -->
-        <div class="card">
-            <h2>Login</h2>
-            <form>
-                <input type="email" placeholder="Email Address" required>
-                <input type="password" placeholder="Password" required>
-                <button type="submit" class="btn">Login</button>
-            </form>
-        </div>
-
-        <!-- Signup Box -->
-        <div class="card">
-            <h2>Sign Up</h2>
-            <form>
-                <input type="text" placeholder="Username" required>
-                <input type="email" placeholder="Email Address" required>
-                <input type="password" placeholder="Create Password" required>
-                <button type="submit" class="btn">Register</button>
-            </form>
-        </div>
-
-        <!-- Posts / Feed Box -->
-        <div class="card feed-container">
-            <h2>Recent Posts</h2>
-            
-            <div class="post-box">
-                <div class="post-title">Custom Car Modification Project #1</div>
-                <p class="post-desc">Phonk music synchronized high-energy video edits and exterior tuning concepts updated live.</p>
-            </div>
-
-            <div class="post-box">
-                <div class="post-title">Digital Web Design Showcase</div>
-                <p class="post-desc">Explore professional multi-vendor UI concepts and responsive layout designs built for commercial clients.</p>
-            </div>
-
-        </div>
-
+  <div id='welcomeScreen'>
+    <div class='step-welcome-text' id='stepWelcomeText'>WELCOME</div>
+    <div class='step-brand-box' id='stepBrandBox'>
+      <img alt='Logo' class='welcome-logo-img animated-logo' src='https://yt3.ggpht.com/XZa3XQUywfbP3pgUn9Ln-CaD6ntlDduYJCs7Scugr9vGgHs-trVVwdG3_lAVaXTsIoGc8tq7FA=s88-c-k-c0x00ffffff-no-rj'/>
+      <div class='welcome-main-title'>MR ISHI YT</div>
     </div>
+  </div>
 
+  <header>
+    <div class='nav-container'>
+      <a class='brand-logo' href='/'>
+        <img alt='Logo' class='brand-img animated-logo' src='https://yt3.ggpht.com/XZa3XQUywfbP3pgUn9Ln-CaD6ntlDduYJCs7Scugr9vGgHs-trVVwdG3_lAVaXTsIoGc8tq7FA=s88-c-k-c0x00ffffff-no-rj'/>
+        <span class='brand-text'>Mr Ishi Yt</span>
+      </a>
+      <div class='nav-links'>
+        <a href='/'><i class='fa-solid fa-house'/> Home</a>
+        <a href='https://www.youtube.com/@mr.rishi_yt' target='_blank'><i class='fa-brands fa-youtube' style='color:#ef4444;'/> YouTube</a>
+      </div>
+    </div>
+  </header>
+
+  <div class='hero-section' id='heroSection'>
+    <img alt='Mr Ishi Yt Logo' class='hero-channel-logo animated-logo' src='https://yt3.ggpht.com/XZa3XQUywfbP3pgUn9Ln-CaD6ntlDduYJCs7Scugr9vGgHs-trVVwdG3_lAVaXTsIoGc8tq7FA=s88-c-k-c0x00ffffff-no-rj'/>
+    <div class='hero-logo-title'>Mr Ishi Yt</div>
+    <div class='hero-badge'><i class='fa-solid fa-sparkles'/> Mr Ishi Yt</div>
+    <h1 class='hero-title'>Production-Ready <span>Master Prompts</span></h1>
+    <p class='hero-desc'>Explore highly optimized prompts engineered for high-end cinematic generation and advanced visual design.</p>
+  </div>
+
+  <div id='toast'><i class='fa-solid fa-circle-check' style='color: #38bdf8;'/> Prompt copied to clipboard!</div>
+
+  <div class='main-wrapper' id='mainWrapper'>
+    <main>
+      <b:section id='main' showaddelement='yes'>
+        <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+            <b:widget-setting name='style.textcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='showShareButtons'>false</b:widget-setting>
+            <b:widget-setting name='showCommentLink'>false</b:widget-setting>
+            <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='showAuthor'>false</b:widget-setting>
+            <b:widget-setting name='style.linkcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+            <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='timestampLabel'/>
+            <b:widget-setting name='reactionsLabel'/>
+            <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+            <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+            <b:widget-setting name='showLabels'>false</b:widget-setting>
+            <b:widget-setting name='showLocation'>true</b:widget-setting>
+            <b:widget-setting name='postLabelsLabel'/>
+            <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+            <b:widget-setting name='postsPerAd'>3</b:widget-setting>
+            <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+            <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='showInlineAds'>true</b:widget-setting>
+            <b:widget-setting name='showReactions'>false</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id='main'>
+            <b:if cond='data:posts.empty'>
+              <article class='ai-card'>
+                <h2 class='ai-card-title'>No Prompts Found</h2>
+                <div class='ai-content'>Your blog architecture is active. Publish your first post from the Blogger dashboard.</div>
+              </article>
+            <b:else/>
+              <b:loop values='data:posts' var='post'>
+                <article class='ai-card'>
+                  <h2 class='ai-card-title'><data:post.title/></h2>
+                  <div class='ai-meta'>
+                    <span><i class='fa-regular fa-calendar'/> <data:post.date/></span>
+                  </div>
+                  <div class='ai-content'>
+                    <data:post.body/>
+                  </div>
+                </article>
+              </b:loop>
+            </b:if>
+          </b:includable>
+          <b:includable id='aboutPostAuthor'>
+            <div class='author-name'>
+              <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+                <span><data:post.author.name/></span>
+              </a>
+            </div>
+            <div>
+              <span class='author-desc'><data:post.author.aboutMe/></span>
+            </div>
+          </b:includable>
+          <b:includable id='addComments'>
+            <a expr:href='data:post.commentsUrl' expr:onclick='data:post.commentsUrlOnclick'>
+              <b:message name='messages.postAComment'/>
+            </a>
+          </b:includable>
+          <b:includable id='commentAuthorAvatar'>
+            <div class='avatar-image-container'>
+              <img class='author-avatar' expr:src='data:comment.authorAvatarSrc' height='35' width='35'/>
+            </div>
+          </b:includable>
+          <b:includable id='commentDeleteIcon' var='comment'>
+            <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
+              <b:if cond='data:showCmtPopup'>
+                <div class='goog-toggle-button'>
+                  <div class='goog-inline-block comment-action-icon'/>
+                </div>
+              <b:else/>
+                <a class='comment-delete' expr:href='data:comment.deleteUrl' expr:title='data:messages.deleteComment'>
+                  <img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+                </a>
+              </b:if>
+            </span>
+          </b:includable>
+          <b:includable id='commentForm' var='post'/>
+          <b:includable id='commentFormIframeSrc' var='post'>
+            <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+          </b:includable>
+          <b:includable id='commentItem' var='comment'/>
+          <b:includable id='commentList' var='comments'/>
+          <b:includable id='commentPicker' var='post'/>
+          <b:includable id='comments' var='post'/>
+          <b:includable id='commentsTitle'>
+            <h3 class='title'><data:messages.comments/></h3>
+          </b:includable>
+          <b:includable id='feedLinks'/>
+          <b:includable id='feedLinksBody' var='links'/>
+          <b:includable id='homePageLink'/>
+          <b:includable id='iframeComments' var='post'/>
+          <b:includable id='inlineAd' var='post'/>
+          <b:includable id='nextPageLink'/>
+          <b:includable id='post' var='post'/>
+          <b:includable id='postBody' var='post'><data:post.body/></b:includable>
+          <b:includable id='postBodySnippet' var='post'/>
+          <b:includable id='postCommentsAndAd' var='post'/>
+          <b:includable id='postCommentsLink'/>
+          <b:includable id='postFooter' var='post'/>
+          <b:includable id='postFooterAuthorProfile' var='post'>
+            <b:if cond='data:post.author.aboutMe and data:view.isPost'>
+              <div class='author-profile'>
+                <b:if cond='data:post.author.authorPhoto.url'>
+                  <img class='author-image' expr:src='data:post.author.authorPhoto.url' width='50px'/>
+                  <div class='author-about'>
+                    <b:include data='post' name='aboutPostAuthor'/>
+                  </div>
+                <b:else/>
+                  <b:include data='post' name='aboutPostAuthor'/>
+                </b:if>
+              </div>
+            </b:if>
+          </b:includable>
+          <b:includable id='postHeader' var='post'/>
+          <b:includable id='postMeta' var='post'/>
+          <b:includable id='postPagination'/>
+          <b:includable id='postTitle' var='post'>
+            <a expr:name='data:post.id'/>
+            <b:if cond='data:post.title != &quot;&quot;'>
+              <h3 class='post-title entry-title'>
+                <b:if cond='data:post.link or (data:post.url and data:view.url != data:post.url)'>
+                  <a expr:href='data:post.link ?: data:post.url'><data:post.title/></a>
+                <b:else/>
+                  <data:post.title/>
+                </b:if>
+              </h3>
+            </b:if>
+          </b:includable>
+          <b:includable id='previousPageLink'>
+            <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:messages.newerPosts'>
+              <data:messages.newerPosts/>
+            </a>
+          </b:includable>
+          <b:includable id='threadedCommentForm' var='post'/>
+          <b:includable id='threadedCommentJs' var='post'/>
+          <b:includable id='threadedComments' var='post'/>
+          <b:includable id='tooltipCss'>
+            <style>
+              .post-body a.b-tooltip-container {
+                position: relative;
+                display: inline-block;
+              }
+            </style>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </main>
+  </div>
+
+  <footer>
+    <div>&#169; 2026 <a href='/'>Mr Ishi Yt</a>. Powered by Advanced Web Architecture.</div>
+  </footer>
+
+  <script>
+    function startWebsiteTransition() {
+      const dinoPreloader = document.getElementById(&#39;dino-preloader&#39;);
+      const welcomeScreen = document.getElementById(&#39;welcomeScreen&#39;);
+      const stepWelcomeText = document.getElementById(&#39;stepWelcomeText&#39;);
+      const stepBrandBox = document.getElementById(&#39;stepBrandBox&#39;);
+      const heroSection = document.getElementById(&#39;heroSection&#39;);
+      const mainWrapper = document.getElementById(&#39;mainWrapper&#39;);
+
+      dinoPreloader.classList.add(&#39;reveal-black&#39;);
+
+      setTimeout(() =&gt; {
+        welcomeScreen.classList.add(&#39;active&#39;);
+        stepWelcomeText.classList.add(&#39;show&#39;);
+      }, 300);
+
+      setTimeout(() =&gt; {
+        stepWelcomeText.classList.add(&#39;hide&#39;);
+      }, 1500);
+
+      setTimeout(() =&gt; {
+        stepBrandBox.classList.add(&#39;show-zoom&#39;);
+      }, 1900);
+
+      setTimeout(() =&gt; {
+        stepBrandBox.classList.add(&#39;zoom-out-exit&#39;);
+      }, 3300);
+
+      setTimeout(() =&gt; {
+        dinoPreloader.style.display = &#39;none&#39;;
+        welcomeScreen.style.display = &#39;none&#39;;
+        heroSection.classList.add(&#39;show-up&#39;);
+        mainWrapper.classList.add(&#39;show-up&#39;);
+      }, 4000);
+    }
+  </script>
 </body>
 </html>
